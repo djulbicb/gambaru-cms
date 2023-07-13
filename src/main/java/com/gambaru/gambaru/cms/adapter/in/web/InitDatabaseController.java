@@ -2,7 +2,7 @@ package com.gambaru.gambaru.cms.adapter.in.web;
 
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.BarcodeEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserAttendanceEntity;
-import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserEntity;
+import com.gambaru.gambaru.cms.adapter.out.persistence.entity.user.UserEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserMembershipPaymentEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.BarcodeRepository;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.UserAttendanceRepository;
@@ -11,7 +11,6 @@ import com.gambaru.gambaru.cms.adapter.out.persistence.repo.UserRepository;
 import data.DataLibrary;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +30,7 @@ public class InitDatabaseController {
     private final BarcodeRepository barcodeRepository;
     private final UserAttendanceRepository attendanceRepository;
     private final UserMembershipPaymentRepository membershipPaymentRepository;
-    DataLibrary dl = DataLibrary.getSerbianData();
+    private final DataLibrary dl = DataLibrary.getSerbianData();
 
     LocalDateTime randomDT () {
         LocalDateTime startDateTime = LocalDateTime.of(1970, 1, 1, 0, 0, 0);

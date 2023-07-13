@@ -1,13 +1,15 @@
 package com.gambaru.gambaru.cms.adapter.out.persistence.repo;
 
-import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserEntity;
+import com.gambaru.gambaru.cms.adapter.out.persistence.entity.user.UserEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.projections.UserLastLogProjection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
+    @Query("SELECT u FROM UserEntity u WHERE u.barcode.barcodeId = :barcodeId")
+    public Optional<UserEntity> findByBarcodeId(Long barcodeId);
     @Query(value = """
         SELECT u.first_name AS firstName,
                u.last_name AS lastName,

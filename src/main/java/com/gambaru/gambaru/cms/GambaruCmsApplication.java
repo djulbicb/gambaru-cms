@@ -1,13 +1,17 @@
 package com.gambaru.gambaru.cms;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+import javax.swing.*;
+import java.awt.*;
 
 @SpringBootApplication
 public class GambaruCmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GambaruCmsApplication.class, args);
+		var ctx = new SpringApplicationBuilder(GambaruCmsApplication.class)
+				.headless(false).run(args);
 	}
 
 }

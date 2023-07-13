@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Table(name = "user_attendance")
 public class UserAttendanceEntity {
     @Id

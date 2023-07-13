@@ -1,25 +1,22 @@
 package com.gambaru.gambaru.cms.adapter.in.web;
 
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserAttendanceEntity;
-import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.UserMembershipPaymentEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.UserAttendanceRepository;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.UserMembershipPaymentRepository;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.UserRepository;
+import com.gambaru.gambaru.cms.application.port.out.InsertUserAttendanceUsecase;
 import com.gambaru.gambaru.cms.application.service.generators.PDFGenerator;
 import com.gambaru.gambaru.cms.application.service.generators.QRGenerator;
 import com.gambaru.gambaru.cms.adapter.out.persistence.entity.BarcodeEntity;
 import com.gambaru.gambaru.cms.adapter.out.persistence.repo.BarcodeRepository;
 import com.gambaru.gambaru.cms.model.BarcodeService;
-import com.itextpdf.text.pdf.Barcode;
-import data.DataLibrary;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -27,10 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @Slf4j
@@ -55,6 +49,8 @@ public class DadJokesController {
     @Autowired
     private UserMembershipPaymentRepository membershipPaymentRepository;
 
+    @Autowired
+    private InsertUserAttendanceUsecase insertUserAttendanceUsecase;
     @GetMapping("/data")
     public void testss () {
 
@@ -71,6 +67,7 @@ public class DadJokesController {
 //
 //        UserEntity savedUser = userRepository.save(user);
 
+        insertUserAttendanceUsecase.insert(1L);
         BarcodeEntity barcode = barcodeRepository.findById(1L).get();
         userRepository.nativeQuery(1L);
 

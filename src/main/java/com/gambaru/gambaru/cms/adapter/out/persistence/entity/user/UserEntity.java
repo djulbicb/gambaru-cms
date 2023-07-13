@@ -1,5 +1,7 @@
-package com.gambaru.gambaru.cms.adapter.out.persistence.entity;
+package com.gambaru.gambaru.cms.adapter.out.persistence.entity.user;
 
+import com.gambaru.gambaru.cms.adapter.out.persistence.entity.BarcodeEntity;
+import com.gambaru.gambaru.cms.adapter.out.persistence.entity.TeamEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
